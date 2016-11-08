@@ -20,17 +20,15 @@ public class FileIOUtils {
     Charset charset = Charset.forName("UTF-8"); //support international character sets
     //private final static Logger LOGGER = Logger.getLogger(FileIOUtils.class.getName());
 
-    public void createNewFile(String name) throws IOException {
-        boolean created = false;
+    public boolean createNewFile(String name) throws IOException {
         File newFile = new File(name);
         try {
-            created = newFile.createNewFile();
+            return newFile.createNewFile();
         }catch(Exception e){
             e.printStackTrace();
         }
-        if(!created){
-            throw new FileNotFoundException("Error: File was not created.");
-        }
+
+        return false;
     }
 
     public List<String> readFile(File file){
